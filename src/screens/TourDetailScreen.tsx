@@ -134,34 +134,58 @@ export function TourDetailScreen({ tour, onBack }: TourDetailScreenProps) {
           </CardContent>
         </Card>
 
-        {/* Local Highlights */}
-        <div>
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Camera className="h-5 w-5 text-primary" />
-            Local Highlights
-          </h3>
-          <div className="space-y-3">
-            {tour.highlights.map((highlight, index) => (
-              <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                <span className="text-gray-700 leading-relaxed">{highlight}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Food Stops */}
         <div>
           <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
             <Utensils className="h-5 w-5 text-accent" />
             Authentic Food Stops
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {tour.foodStops.map((stop, index) => (
-              <div key={index} className="flex items-start gap-3 p-3 bg-accent/5 rounded-lg border border-accent/20">
-                <Coffee className="h-4 w-4 text-accent mt-1 flex-shrink-0" />
-                <span className="text-gray-700 leading-relaxed">{stop}</span>
-              </div>
+              <Card key={index} className="border border-accent/20">
+                <CardContent className="p-4">
+                  <div className="flex items-start gap-3 mb-3">
+                    <Coffee className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900 mb-1">{stop.name}</h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">{stop.description}</p>
+                    </div>
+                  </div>
+                  <div className="ml-8">
+                    <h5 className="font-medium text-gray-800 mb-2 text-sm">Must-try items:</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {stop.menuHighlights.map((item, itemIndex) => (
+                        <Badge key={itemIndex} variant="secondary" className="text-xs bg-accent/10 text-accent border-accent/20">
+                          {item}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Points of Interest */}
+        <div>
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Camera className="h-5 w-5 text-primary" />
+            Points of Interest
+          </h3>
+          <div className="space-y-4">
+            {tour.pointsOfInterest.map((poi, index) => (
+              <Card key={index} className="border border-primary/20">
+                <CardContent className="p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900 mb-1">{poi.name}</h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">{poi.description}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

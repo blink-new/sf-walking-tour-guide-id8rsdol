@@ -7,6 +7,17 @@ import { BottomNavigation } from './components/BottomNavigation'
 
 export type Screen = 'home' | 'tours' | 'tour-detail' | 'map'
 
+export interface FoodStop {
+  name: string
+  description: string
+  menuHighlights: string[]
+}
+
+export interface PointOfInterest {
+  name: string
+  description: string
+}
+
 export interface Tour {
   id: string
   title: string
@@ -18,7 +29,8 @@ export interface Tour {
   reviewCount: number
   description: string
   highlights: string[]
-  foodStops: string[]
+  foodStops: FoodStop[]
+  pointsOfInterest: PointOfInterest[]
   image: string
   price: number
 }
